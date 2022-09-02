@@ -9,7 +9,13 @@ public class Minesweeper {
 
     public String[] getHints() {
 
-        return new String[]{"0"};
+        String[] field = new String[input.length];
+
+        for (int i = 0; i < input.length; i++) {
+            field[i] = "0";
+        }
+
+        return field;
     }
 
 }
