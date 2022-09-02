@@ -28,4 +28,12 @@ public class MinesweeperTest {
         );
     }
 
+    @Test
+    public void testOneBomb() {
+        assertArrayEquals(
+                new String[]{"*"},
+                new Minesweeper(new String[]{"*"}).getHints()
+        );
+    }
+
 }
