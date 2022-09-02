@@ -11,4 +11,14 @@ public class MinesweeperTest {
             new Minesweeper(new String[]{"."}).getHints()
         );
     }
+
+    @Test
+    public void testTwoCell() {
+        assertArrayEquals(
+                new String[]{"0", "0"},
+                new Minesweeper(new String[]{".", "."}).getHints()
+        );
+    }
+
+
 }
