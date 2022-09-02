@@ -14,7 +14,11 @@ public class Minesweeper {
         for (int x = 0; x < input.length; x++) {
             field[x] = "";
             for (int y = 0; y < input[x].length(); y++) {
-                field[x] += "0";
+                if (input[x].equals("*")){
+                    field[x] += "*";
+                } else {
+                    field[x] += "0";
+                }
             }
         }
 
