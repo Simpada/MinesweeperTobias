@@ -11,18 +11,26 @@ public class Minesweeper {
 
         String[] field = new String[input.length];
 
-        for (int x = 0; x < input.length; x++) {
-            field[x] = "";
-            for (int y = 0; y < input[x].length(); y++) {
-                if (input[x].equals("*")){
-                    field[x] += "*";
+        for (int row = 0; row < input.length; row++) {
+            field[row] = "";
+            for (int column = 0; column < input[row].length(); column++) {
+                if (input[row].charAt(column) == '*'){
+                    field[row] += "*";
                 } else {
-                    field[x] += "0";
+                    int numberOfBombs = 0;
+                    if (column > 0) {
+                        if (input[row].charAt(column - 1) == '*') {
+                            numberOfBombs++;
+                        }
+                    }
+                    field[row] += numberOfBombs;
                 }
             }
         }
 
         return field;
     }
+
+
 
 }
