@@ -12,7 +12,10 @@ public class Minesweeper {
         String[] field = new String[input.length];
 
         for (int x = 0; x < input.length; x++) {
-            field[x] = "0";
+            field[x] = "";
+            for (int y = 0; y < input[x].length(); y++) {
+                field[x] += "0";
+            }
         }
 
         return field;
