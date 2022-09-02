@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class MinesweeperTest {
 
     @Test
-    public void testOneCell() {
+    public void testOneRow() {
         assertArrayEquals(
             new String[]{"0"},
             new Minesweeper(new String[]{"."}).getHints()
@@ -13,12 +13,11 @@ public class MinesweeperTest {
     }
 
     @Test
-    public void testTwoCell() {
+    public void testTwoRows() {
         assertArrayEquals(
                 new String[]{"0", "0"},
                 new Minesweeper(new String[]{".", "."}).getHints()
         );
     }
-
 
 }

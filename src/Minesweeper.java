@@ -11,8 +11,8 @@ public class Minesweeper {
 
         String[] field = new String[input.length];
 
-        for (int i = 0; i < input.length; i++) {
-            field[i] = "0";
+        for (int x = 0; x < input.length; x++) {
+            field[x] = "0";
         }
 
         return field;
