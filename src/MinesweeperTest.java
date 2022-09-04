@@ -44,4 +44,12 @@ public class MinesweeperTest {
         );
     }
 
+    @Test
+    public void testDetectTwoBombs() {
+        assertArrayEquals(
+                new String[]{"*2*"},
+                new Minesweeper(new String[]{"*.*"}).getHints()
+        );
+    }
+
 }
