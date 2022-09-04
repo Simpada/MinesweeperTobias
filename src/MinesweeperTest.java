@@ -108,7 +108,7 @@ public class MinesweeperTest {
                         board[r] += ".";
                     }
                 }
-                int[] bombPositions = new int[columns];
+                boolean[] bombPositions = new boolean[columns];
 
                 for (int c = 0; c < columns; c++) {
                     if (numOfBombs <= 0) break;
@@ -116,24 +116,23 @@ public class MinesweeperTest {
                     if (board[r].charAt(c) != '*') {
                         int bombChance = random.nextInt(100);
                         if (bombChance > 95) {
-                            bombPositions[c] = 1;
+                            bombPositions[c] = true;
                             numOfBombs--;
                         }
                     }
                 }
                 board[r] = replace(bombPositions, board[r]);
             }
-
         }
         return board;
     }
 
-    public String replace(int[] position, String input) {
+    public String replace(boolean[] position, String input) {
         char[] charArray = input.toCharArray();
         String newRow = "";
 
         for (int i = 0; i < charArray.length; i++) {
-            if (position[i] == 0) {
+            if (!position[i]) {
                 newRow += charArray[i];
             } else {
                 newRow += "*";
