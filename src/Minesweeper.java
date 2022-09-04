@@ -14,23 +14,48 @@ public class Minesweeper {
         for (int row = 0; row < input.length; row++) {
             field[row] = "";
             for (int column = 0; column < input[row].length(); column++) {
+
                 if (input[row].charAt(column) == '*'){
+
                     field[row] += "*";
+
                 } else {
-                    int numberOfBombs = 0;
-                    if (column > 0) {
-                        if (input[row].charAt(column - 1) == '*') {
-                            numberOfBombs++;
-                        }
-                    }
-                    field[row] += numberOfBombs;
+
+                    int bombCounter = 0;
+
+                    if(detectBomb(row-1, column-1)) bombCounter++;
+                    if(detectBomb(row-1, column)) bombCounter++;
+                    if(detectBomb(row-1, column+1)) bombCounter++;
+                    if(detectBomb(row, column-1)) bombCounter++;
+                    if(detectBomb(row, column+1)) bombCounter++;
+                    if(detectBomb(row+1, column-1)) bombCounter++;
+                    if(detectBomb(row+1, column)) bombCounter++;
+                    if(detectBomb(row+1, column+1)) bombCounter++;
+
+                    field[row] += bombCounter;
+
                 }
+
             }
         }
 
         return field;
     }
 
+    private boolean detectBomb(int row, int column) {
 
+         if (row < 0 || row >= input.length) {
+             return false;
+         }
+         if (column < 0 || column >= input[row].length()) {
+             return false;
+         }
 
+        if (input[row].charAt(column) == '*') {
+            return true;
+        }
+
+        return false;
+
+    }
 }
