@@ -52,4 +52,12 @@ public class MinesweeperTest {
         );
     }
 
+    @Test
+    public void testSeveralBombs() {
+        assertArrayEquals(
+                new String[]{"*3*", "3*3", "*3*"},
+                new Minesweeper(new String[]{"*.*", ".*.", "*.*"}).getHints()
+        );
+    }
+
 }

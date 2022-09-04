@@ -12,34 +12,43 @@ public class Minesweeper {
         String[] field = new String[input.length];
 
         for (int row = 0; row < input.length; row++) {
+
             field[row] = "";
+
             for (int column = 0; column < input[row].length(); column++) {
 
                 if (input[row].charAt(column) == '*'){
-
                     field[row] += "*";
-
                 } else {
-
-                    int bombCounter = 0;
-
-                    if(detectBomb(row-1, column-1)) bombCounter++;
-                    if(detectBomb(row-1, column)) bombCounter++;
-                    if(detectBomb(row-1, column+1)) bombCounter++;
-                    if(detectBomb(row, column-1)) bombCounter++;
-                    if(detectBomb(row, column+1)) bombCounter++;
-                    if(detectBomb(row+1, column-1)) bombCounter++;
-                    if(detectBomb(row+1, column)) bombCounter++;
-                    if(detectBomb(row+1, column+1)) bombCounter++;
-
-                    field[row] += bombCounter;
-
+                    field[row] += getBombCounter(row, column);
                 }
-
             }
         }
-
         return field;
+    }
+
+    private int getBombCounter(int row, int column) {
+        int bombCounter = 0;
+
+        for (int r = row -1; r <= row +1; r++) {
+            for (int c = column -1; c <= column +1; c++) {
+                if (detectBomb(r, c)) {
+                    bombCounter++;
+                }
+            }
+        }
+        return bombCounter;
+
+        /*
+        if(detectBomb(row -1, column -1)) bombCounter++;
+        if(detectBomb(row -1, column)) bombCounter++;
+        if(detectBomb(row -1, column +1)) bombCounter++;
+        if(detectBomb(row, column -1)) bombCounter++;
+        if(detectBomb(row, column +1)) bombCounter++;
+        if(detectBomb(row +1, column -1)) bombCounter++;
+        if(detectBomb(row +1, column)) bombCounter++;
+        if(detectBomb(row +1, column +1)) bombCounter++;
+        */
     }
 
     private boolean detectBomb(int row, int column) {
@@ -51,11 +60,7 @@ public class Minesweeper {
              return false;
          }
 
-        if (input[row].charAt(column) == '*') {
-            return true;
-        }
-
-        return false;
+         return input[row].charAt(column) == '*';
 
     }
 }
